@@ -76,7 +76,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -88,7 +88,11 @@
       <ul>
         
           <li>
-            <a href="/2017/10/18/hello-world/">Hello World</a>
+            <a href="/2017/10/23/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/23/一个简易的server/">一个简易的server</a>
           </li>
         
           <li>
@@ -129,8 +133,8 @@
   
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/10/18/hello-world/" class="article-date">
-  <time datetime="2017-10-18T08:27:21.915Z" itemprop="datePublished">2017-10-18</time>
+    <a href="/2017/10/23/hello-world/" class="article-date">
+  <time datetime="2017-10-23T02:48:34.476Z" itemprop="datePublished">2017-10-23</time>
 </a>
     
   </div>
@@ -141,7 +145,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/18/hello-world/">Hello World</a>
+      <a class="article-title" href="/2017/10/23/hello-world/">Hello World</a>
     </h1>
   
 
@@ -162,7 +166,58 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/18/hello-world/" data-id="cj8wry94s0000i0r8t4l4stps" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/23/hello-world/" data-id="cj93l1tpo0003yor8c7y75zhp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-一个简易的server" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/23/一个简易的server/" class="article-date">
+  <time datetime="2017-10-23T02:27:19.000Z" itemprop="datePublished">2017-10-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/23/一个简易的server/">一个简易的server</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Node-js-服务器"><a href="#Node-js-服务器" class="headerlink" title="Node.js 服务器"></a>Node.js 服务器</h1><h2 id="接收请求"><a href="#接收请求" class="headerlink" title="接收请求"></a>接收请求</h2><p>我们的脚本只需要一个文件就可以搞定</p>
+<ol>
+<li>cd ~/Desktop; mkdir node-demo; cd node-demo //新建一个安全的目录</li>
+<li>touch server.js<br>3.编辑 server.js<br>4.运行 node server 或者 node server.js，看到报错<br>5.根据报错提示调整你的命令<br>6.成功之后，这个 server 会保持运行，无法退出<br><em>如果你想「中断」这个 server，按 Ctrl + C 即可（C 就是 Cancel 的意思）
+</em>中断后你才能输入其他命令<br>*建议把这个 server 放在那里别动，新开一个 Bash 窗口，完成下面的教程</li>
+</ol>
+<p>好了服务器完成。只不过<br>  1.这个服务器目前只有一个功能，那就是打印出路径和查询字符串<br>  2.还缺少一个重要的功能，那就是发出 HTTP 响应</p>
+<p>目前我们先只做一个功能玩玩。</p>
+<p>接下来你要发起一个请求到这个服务器。这听起来有点怪异，「我向自己发起请求」，目前是的，因为你买不起服务器啊。</p>
+<p>在新的 Bash 窗口运行   curl <a href="http://localhost:你的指定的端口/xxx" target="_blank" rel="external">http://localhost:你的指定的端口/xxx</a> 或者    curl <a href="http://127.0.0.1:你指定的端口/xxx。" target="_blank" rel="external">http://127.0.0.1:你指定的端口/xxx。</a></p>
+<p>你会马上发现 server 打印出了路径<br>  1.这说明我们的 server 收到了我们用 curl 发出的请求<br>  2.由于 server 迟迟没有发出响应，所以 curl 就一直等在那里，无法退出（用 Ctrl + C 中断这个傻 curl）</p>
+<hr>
+<p>##发出响应<br>接下来我们让我们 server 发出响应<br>  1.编辑 server.js<br>  2.在中间我标注的区域添加两行代码<br>    response.write(‘Hi’)<br>    response.end()<br>  3.中断之前的 server，重新运行 node server 8888<br>  4.curl <a href="http://127.0.0.1:8888/xxx，结果如下：" target="_blank" rel="external">http://127.0.0.1:8888/xxx，结果如下：</a><br>    hi%<br>  这个 % 不是我们的内容，% 表示结尾。如果你看 % 不爽，就把 ‘Hi’ 换成 ‘Hi\n’。<br>  5.好了，响应添加成功<br>  6.使用 curl -s -v – “<a href="http://localhost:8888/xxx" target="_blank" rel="external">http://localhost:8888/xxx</a>“ 可以查看完整的请求和响应</p>
+<hr>
+<p>##根据请求返回不同的响应<br>  1.用户请求 / 时，返回 html 内容<br>  2.该 html 内容里面由一个 css link 和一个 script<br>  3.css link 会请求 /style.css，返回 css 内容<br>  4.script 会请求 /main.js，返回 js 内容<br>  5.请求 / /style.css /main.js 以外的路径，则一律返回 404 状态码<br><a href="https://github.com/FuhuaChen/script-demo/blob/master/server.js" target="_blank" rel="external">完整内容参考我的server</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/10/23/一个简易的server/" data-id="cj93l1tfu0000yor8bqfav8h4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -205,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/18/第二篇博客/" data-id="cj8wry9570002i0r8cbao8aai" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/18/第二篇博客/" data-id="cj93l1tpl0002yor89jlw6da8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -242,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/18/开博大吉/" data-id="cj8wry9530001i0r8x5cjgyug" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/18/开博大吉/" data-id="cj93l1tow0001yor8r3zj08qr" class="article-share-link">Share</a>
       
       
     </footer>
