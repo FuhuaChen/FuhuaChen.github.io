@@ -198,15 +198,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Node-js-服务器"><a href="#Node-js-服务器" class="headerlink" title="Node.js 服务器"></a>Node.js 服务器</h1><h2 id="接收请求"><a href="#接收请求" class="headerlink" title="接收请求"></a>接收请求</h2><p>我们的脚本只需要一个文件就可以搞定<br>  1.’cd ~/Desktop; mkdir node-demo; cd node-demo’//新建一个安全的目录<br>  2.’touch server.js’<br>  3.编辑 server.js<br>  4.运行 ‘node server’ 或者’node server.js’，看到报错<br>  5.根据报错提示调整你的命令<br>  6.成功之后，这个 server 会保持运行，无法退出<br>    <em>如果你想「中断」这个 server，按’Ctrl + C’即可（C 就是 Cancel 的意思）
+        <h1 id="Node-js-服务器"><a href="#Node-js-服务器" class="headerlink" title="Node.js 服务器"></a>Node.js 服务器</h1><h2 id="接收请求"><a href="#接收请求" class="headerlink" title="接收请求"></a>接收请求</h2><p>我们的脚本只需要一个文件就可以搞定<br>  1.<code>cd ~/Desktop; mkdir node-demo; cd node-demo</code>//新建一个安全的目录<br>  2.<code>touch server.js</code><br>  3.编辑 server.js<br>  4.运行<code>node server</code>或者<code>node server.js</code>，看到报错<br>  5.根据报错提示调整你的命令<br>  6.成功之后，这个 server 会保持运行，无法退出<br>    <em>如果你想「中断」这个 server，按<code>Ctrl + C</code>即可（C 就是 Cancel 的意思）
     </em>中断后你才能输入其他命令<br>    *建议把这个 server 放在那里别动，新开一个 Bash 窗口，完成下面的教程</p>
 <p>好了服务器完成。只不过<br>  1.这个服务器目前只有一个功能，那就是打印出路径和查询字符串<br>  2.还缺少一个重要的功能，那就是发出 HTTP 响应</p>
 <p>目前我们先只做一个功能玩玩。</p>
 <p>接下来你要发起一个请求到这个服务器。这听起来有点怪异，「我向自己发起请求」，目前是的，因为你买不起服务器啊。</p>
-<p>在新的 Bash 窗口运行’curl <a href="http://localhost:你的指定的端口/xxx&#39;或者&#39;curl" target="_blank" rel="external">http://localhost:你的指定的端口/xxx&#39;或者&#39;curl</a> <a href="http://127.0.0.1:你指定的端口/xxx&#39;。" target="_blank" rel="external">http://127.0.0.1:你指定的端口/xxx&#39;。</a></p>
+<p>在新的 Bash 窗口运行<code>curl http://localhost:你的指定的端口/xxx</code>或者<code>curl http://127.0.0.1:你指定的端口/xxx</code>。</p>
 <p>你会马上发现 server 打印出了路径<br>  1.这说明我们的 server 收到了我们用 curl 发出的请求<br>  2.由于 server 迟迟没有发出响应，所以 curl 就一直等在那里，无法退出（用 Ctrl + C 中断这个傻 curl）</p>
 <hr>
-<h2 id="发出响应"><a href="#发出响应" class="headerlink" title="发出响应"></a>发出响应</h2><p>接下来我们让我们 server 发出响应<br>  1.编辑 server.js<br>  2.在中间我标注的区域添加两行代码<br>    ‘response.write(‘Hi’)’<br>    ‘response.end()’<br>  3.中断之前的 server，重新运行’node server 8888’<br>  4.’curl <a href="http://127.0.0.1:8888/xxx&#39;，结果如下：" target="_blank" rel="external">http://127.0.0.1:8888/xxx&#39;，结果如下：</a><br>    hi%<br>  这个 % 不是我们的内容，% 表示结尾。如果你看 % 不爽，就把 ‘Hi’ 换成 ‘Hi\n’。<br>  5.好了，响应添加成功<br>  6.使用’curl -s -v – “<a href="http://localhost:8888/xxx" target="_blank" rel="external">http://localhost:8888/xxx</a>“‘ 可以查看完整的请求和响应</p>
+<h2 id="发出响应"><a href="#发出响应" class="headerlink" title="发出响应"></a>发出响应</h2><p>接下来我们让我们 server 发出响应<br>  1.编辑 server.js<br>  2.在中间我标注的区域添加两行代码<br>    <code>response.write(&#39;Hi&#39;)</code><br>    <code>response.end()</code><br>  3.中断之前的 server，重新运行<code>node server 8888</code><br>  4.<code>curl http://127.0.0.1:8888/xxx</code>，结果如下：<br>    <code>hi%</code><br>  这个 % 不是我们的内容，% 表示结尾。如果你看 % 不爽，就把 <code>Hi</code> 换成 <code>Hi\n</code>。<br>  5.好了，响应添加成功<br>  6.使用<code>curl -s -v -- &quot;http://localhost:8888/xxx&quot;</code> 可以查看完整的请求和响应</p>
 <hr>
 <h2 id="根据请求返回不同的响应"><a href="#根据请求返回不同的响应" class="headerlink" title="根据请求返回不同的响应"></a>根据请求返回不同的响应</h2><p>  1.用户请求 / 时，返回 html 内容<br>  2.该 html 内容里面由一个 css link 和一个 script<br>  3.css link 会请求 /style.css，返回 css 内容<br>  4.script 会请求 /main.js，返回 js 内容<br>  5.请求 / /style.css /main.js 以外的路径，则一律返回 404 状态码<br><a href="https://github.com/FuhuaChen/script-demo/blob/master/server.js" target="_blank" rel="external">完整内容参考我的server</a></p>
 
