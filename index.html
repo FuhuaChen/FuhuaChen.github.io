@@ -76,7 +76,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -88,7 +88,11 @@
       <ul>
         
           <li>
-            <a href="/2017/11/05/hello-world/">Hello World</a>
+            <a href="/2017/12/28/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/27/移动端响应式/">移动端响应式</a>
           </li>
         
           <li>
@@ -101,10 +105,6 @@
         
           <li>
             <a href="/2017/10/18/第二篇博客/">第二篇博客</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/18/开博大吉/">开博大吉</a>
           </li>
         
       </ul>
@@ -137,8 +137,8 @@
   
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/11/05/hello-world/" class="article-date">
-  <time datetime="2017-11-05T10:13:20.995Z" itemprop="datePublished">2017-11-05</time>
+    <a href="/2017/12/28/hello-world/" class="article-date">
+  <time datetime="2017-12-28T07:37:49.652Z" itemprop="datePublished">2017-12-28</time>
 </a>
     
   </div>
@@ -149,7 +149,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/05/hello-world/">Hello World</a>
+      <a class="article-title" href="/2017/12/28/hello-world/">Hello World</a>
     </h1>
   
 
@@ -170,7 +170,64 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/05/hello-world/" data-id="cj9mlnvtv0001hor8zyda48d9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/28/hello-world/" data-id="cjbq6g11x0004j4r8kwdyuu32" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-移动端响应式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/27/移动端响应式/" class="article-date">
+  <time datetime="2017-12-27T14:25:12.000Z" itemprop="datePublished">2017-12-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/27/移动端响应式/">移动端响应式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>媒体查询:当媒体满足(xxx)时就应用{}里的样式<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@media (min-width:300px) and (max-width:800px) &#123;</div><div class="line">    body &#123;</div><div class="line">        background:red</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>link引入css样式时受媒体查询影响<br><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; media=&quot;(max-wdith:800px)&quot;&gt;</code><br>当媒体满足<code>(max-wdith:800px)</code>时link里的css样式才会生效（这里生效不是指下载，link里的css文件不管是否满足media条件始终都会下载）</p>
+<ol>
+<li><p>根据设计图做网页</p>
+</li>
+<li><p>学会隐藏元素</p>
+</li>
+<li><p>手机端需要加一个meta来阻止页面的缩放：<br><code>&lt;meta name=&quot;viewport&quot; contenr=&quot;width=device-width&quot;, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</code></p>
+</li>
+<li><p>手机端的交互方式不一样：</p>
+</li>
+</ol>
+<ul>
+<li>没有hover</li>
+<li>没有touch事件</li>
+<li>没有resize</li>
+<li>没有滚动条</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/27/移动端响应式/" data-id="cjbq6g0ye0000j4r8rk27extx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -369,7 +426,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/24/HTML基础知识/" data-id="cj9mlnvsx0000hor84odjja2f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/24/HTML基础知识/" data-id="cjbq6g11m0002j4r82kit7y3x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -416,7 +473,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/23/一个简易的server/" data-id="cj9mlnvwv0004hor82wldwqqy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/23/一个简易的server/" data-id="cjbq6g1200005j4r8cons65m1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -459,7 +516,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/18/第二篇博客/" data-id="cj9mlnvwk0003hor89zty60pw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/18/第二篇博客/" data-id="cjbq6g11u0003j4r82figpu5a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -496,7 +553,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/18/开博大吉/" data-id="cj9mlnvw20002hor8i1akj1kq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/18/开博大吉/" data-id="cjbq6g1150001j4r8iay7buyl" class="article-share-link">Share</a>
       
       
     </footer>

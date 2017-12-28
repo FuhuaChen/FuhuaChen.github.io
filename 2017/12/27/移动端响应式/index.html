@@ -3,15 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | Hexo个人博客</title>
+  <title>移动端响应式 | Hexo个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo个人博客">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="媒体查询:当媒体满足(xxx)时就应用{}里的样式12345@media (min-width:300px) and (max-width:800px) &amp;#123;    body &amp;#123;        background:red    &amp;#125;&amp;#125;   link引入css样式时受媒体查询影响&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端响应式">
+<meta property="og:url" content="http://yoursite.com/2017/12/27/移动端响应式/index.html">
 <meta property="og:site_name" content="Hexo个人博客">
+<meta property="og:description" content="媒体查询:当媒体满足(xxx)时就应用{}里的样式12345@media (min-width:300px) and (max-width:800px) &amp;#123;    body &amp;#123;        background:red    &amp;#125;&amp;#125;   link引入css样式时受媒体查询影响&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2017-12-28T07:36:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo个人博客">
+<meta name="twitter:title" content="移动端响应式">
+<meta name="twitter:description" content="媒体查询:当媒体满足(xxx)时就应用{}里的样式12345@media (min-width:300px) and (max-width:800px) &amp;#123;    body &amp;#123;        background:red    &amp;#125;&amp;#125;   link引入css样式时受媒体查询影响&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=">
   
   
     <link rel="icon" href="/favicon.png">
@@ -133,134 +137,81 @@
   
 </aside>
         
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/12/28/hello-world/" class="archive-article-date">
-  <time datetime="2017-12-28T07:37:49.652Z" itemprop="datePublished">12月 28</time>
+        <section id="main"><article id="post-移动端响应式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/27/移动端响应式/" class="article-date">
+  <time datetime="2017-12-27T14:25:12.000Z" itemprop="datePublished">2017-12-27</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/28/hello-world/">Hello World</a>
+    <h1 class="article-title" itemprop="name">
+      移动端响应式
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/12/27/移动端响应式/" class="archive-article-date">
-  <time datetime="2017-12-27T14:25:12.000Z" itemprop="datePublished">12月 27</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/27/移动端响应式/">移动端响应式</a>
-    </h1>
-  
+        <ol>
+<li>媒体查询:当媒体满足(xxx)时就应用{}里的样式<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@media (min-width:300px) and (max-width:800px) &#123;</div><div class="line">    body &#123;</div><div class="line">        background:red</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>link引入css样式时受媒体查询影响<br><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; media=&quot;(max-wdith:800px)&quot;&gt;</code><br>当媒体满足<code>(max-wdith:800px)</code>时link里的css样式才会生效（这里生效不是指下载，link里的css文件不管是否满足media条件始终都会下载）</p>
+<ol>
+<li><p>根据设计图做网页</p>
+</li>
+<li><p>学会隐藏元素</p>
+</li>
+<li><p>手机端需要加一个meta来阻止页面的缩放：<br><code>&lt;meta name=&quot;viewport&quot; contenr=&quot;width=device-width&quot;, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</code></p>
+</li>
+<li><p>手机端的交互方式不一样：</p>
+</li>
+</ol>
+<ul>
+<li>没有hover</li>
+<li>没有touch事件</li>
+<li>没有resize</li>
+<li>没有滚动条</li>
+</ul>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/10/24/HTML基础知识/" class="archive-article-date">
-  <time datetime="2017-10-24T08:33:17.000Z" itemprop="datePublished">10月 24</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/24/HTML基础知识/">HTML基础知识</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/10/23/一个简易的server/" class="archive-article-date">
-  <time datetime="2017-10-23T02:27:19.000Z" itemprop="datePublished">10月 23</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/27/移动端响应式/" data-id="cjbq6g0ye0000j4r8rk27extx" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/23/一个简易的server/">一个简易的server</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/10/18/第二篇博客/" class="archive-article-date">
-  <time datetime="2017-10-18T06:59:19.000Z" itemprop="datePublished">10月 18</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/18/第二篇博客/">第二篇博客</a>
-    </h1>
-  
-
-    </header>
+    </footer>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/10/18/开博大吉/" class="archive-article-date">
-  <time datetime="2017-10-18T06:52:07.000Z" itemprop="datePublished">10月 18</time>
-</a>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/18/开博大吉/">开博大吉</a>
-    </h1>
+    <a href="/2017/12/28/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
   
+  
+    <a href="/2017/10/24/HTML基础知识/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">HTML基础知识</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
       </div>
