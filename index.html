@@ -76,7 +76,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -88,7 +88,11 @@
       <ul>
         
           <li>
-            <a href="/2017/12/28/hello-world/">Hello World</a>
+            <a href="/2017/12/29/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/28/动态REM/">动态REM</a>
           </li>
         
           <li>
@@ -101,10 +105,6 @@
         
           <li>
             <a href="/2017/10/23/一个简易的server/">一个简易的server</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/18/第二篇博客/">第二篇博客</a>
           </li>
         
       </ul>
@@ -137,8 +137,8 @@
   
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/12/28/hello-world/" class="article-date">
-  <time datetime="2017-12-28T07:37:49.652Z" itemprop="datePublished">2017-12-28</time>
+    <a href="/2017/12/29/hello-world/" class="article-date">
+  <time datetime="2017-12-29T07:06:55.757Z" itemprop="datePublished">2017-12-29</time>
 </a>
     
   </div>
@@ -149,7 +149,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/28/hello-world/">Hello World</a>
+      <a class="article-title" href="/2017/12/29/hello-world/">Hello World</a>
     </h1>
   
 
@@ -170,7 +170,81 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/28/hello-world/" data-id="cjbq6g11x0004j4r8kwdyuu32" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/29/hello-world/" data-id="cjbrks58t00014gr89xurjdxb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-动态REM" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/28/动态REM/" class="article-date">
+  <time datetime="2017-12-28T14:29:53.000Z" itemprop="datePublished">2017-12-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/28/动态REM/">动态REM</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="动态REM"><a href="#动态REM" class="headerlink" title="动态REM"></a>动态REM</h1><ol>
+<li><p>什么是REM：这个单位代表根元素的<code>font-size</code>(默认为16px)的大小</p>
+</li>
+<li><p>REM和EM的区别：REM指根元素的<code>font-size</code>，EM指自身元素的<code>font-size</code></p>
+</li>
+<li><p>手机端方案的特点：所有的手机显示的界面都是一样的，只是大小不同。由于REM代表html的<code>font-size</code>，我们可以间接用REM表示viewport width（设备宽度），<br>然后用JS动态调整REM</p>
+</li>
+<li><p>用JS动态调整REM：我们可以用<code>document.write()</code>写入样式，同样需要写一个meta来阻止页面的缩放：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    var pageWidth = window.innerWidth</div><div class="line">    document.write(&apos;&lt;style&gt;html&#123;font-size&apos; + pageWidth/10 + &apos;px;&#125;&lt;/style&gt;&apos;)</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>此时<code>1REM==html{font-size}==pageWidth/10</code>也就是设备宽度的十分之一</p>
+<ol>
+<li><p>REM可以和其他单位同时使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">font-size:16px;</div><div class="line">border:1px soild red;</div><div class="line">width:5rem;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在SCSS里使用PX2REM：<br>首先安装SASS</p>
+</li>
+</ol>
+<ul>
+<li>npm config set registry <a href="https://registry.npm.taobao.org/" target="_blank" rel="external">https://registry.npm.taobao.org/</a></li>
+<li>touch ~/.bashrc</li>
+<li>echo ‘export SASS_BINARY_SIZE=”<a href="https://npm.taobao.org/mirrors/node-sass&quot;&#39;&gt;&gt;~/.bashrc" target="_blank" rel="external">https://npm.taobao.org/mirrors/node-sass&quot;&#39;&gt;&gt;~/.bashrc</a></li>
+<li>source ~/.bashrc</li>
+<li><p>npm i -g node-sass</p>
+</li>
+<li><p>makdir ~/Docktop/scss-demo</p>
+</li>
+<li>cd ~/Docktop/scss-demo</li>
+<li>mkdir scss css</li>
+<li>touch scss/style.scss</li>
+<li><p>start scss/style.scss</p>
+</li>
+<li><p>node-sass -wr scss -o css</p>
+</li>
+</ul>
+<p>编辑scss文件自动得到css文件：<br>在scss文件里添加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">@function px($px)&#123;</div><div class="line">    @return $px/designWidth*10 + rem;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$designWidth: 640; //这里的640指设计稿的宽度，需要根据设计稿的宽度填写</div><div class="line"></div><div class="line">.child&#123;</div><div class="line">    width: px(320); //这里的px()指上面的function</div><div class="line">    height: px(160);</div><div class="line">    margin: px(40) px(40);</div><div class="line">    border: 1px soild red;</div><div class="line">    float: left;</div><div class="line">    font-size: 1em</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>即可实现px自动变为rem</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/28/动态REM/" data-id="cjbrks58z00034gr8vaxzz2z7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -227,7 +301,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/27/移动端响应式/" data-id="cjbq6g0ye0000j4r8rk27extx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/27/移动端响应式/" data-id="cjbrks59500054gr8qq5lny7h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -426,7 +500,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/24/HTML基础知识/" data-id="cjbq6g11m0002j4r82kit7y3x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/24/HTML基础知识/" data-id="cjbrks58l00004gr88ek1lopg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -473,7 +547,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/23/一个简易的server/" data-id="cjbq6g1200005j4r8cons65m1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/23/一个简易的server/" data-id="cjbrks58x00024gr8js9wk6z1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -516,7 +590,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/18/第二篇博客/" data-id="cjbq6g11u0003j4r82figpu5a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/18/第二篇博客/" data-id="cjbrks59a00064gr8dqbtidgd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -553,7 +627,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/18/开博大吉/" data-id="cjbq6g1150001j4r8iay7buyl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/18/开博大吉/" data-id="cjbrks59100044gr8iaj7mons" class="article-share-link">Share</a>
       
       
     </footer>

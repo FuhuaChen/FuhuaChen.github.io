@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>动态REM | Hexo个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="动态REM 什么是REM：这个单位代表根元素的font-size(默认为16px)的大小  REM和EM的区别：REM指根元素的font-size，EM指自身元素的font-size  手机端方案的特点：所有的手机显示的界面都是一样的，只是大小不同。由于REM代表html的font-size，我们可以间接用REM表示viewport width（设备宽度），然后用JS动态调整REM  用JS动态调">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态REM">
+<meta property="og:url" content="http://yoursite.com/2017/12/28/动态REM/index.html">
+<meta property="og:site_name" content="Hexo个人博客">
+<meta property="og:description" content="动态REM 什么是REM：这个单位代表根元素的font-size(默认为16px)的大小  REM和EM的区别：REM指根元素的font-size，EM指自身元素的font-size  手机端方案的特点：所有的手机显示的界面都是一样的，只是大小不同。由于REM代表html的font-size，我们可以间接用REM表示viewport width（设备宽度），然后用JS动态调整REM  用JS动态调">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2017-12-29T06:58:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="动态REM">
+<meta name="twitter:description" content="动态REM 什么是REM：这个单位代表根元素的font-size(默认为16px)的大小  REM和EM的区别：REM指根元素的font-size，EM指自身元素的font-size  手机端方案的特点：所有的手机显示的界面都是一样的，只是大小不同。由于REM代表html的font-size，我们可以间接用REM表示viewport width（设备宽度），然后用JS动态调整REM  用JS动态调">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'> -->
+  <!-- <link href="//fonts.googleapis.com/css?family=Source+Code+Pro:400,700" rel="stylesheet" type="text/css"> -->
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro:400,700" rel="stylesheet" type="text/css">
+  <link href='//fonts.useso.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <a href="/" class="logo">Hexo个人博客</a>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about/index.html">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+        </div>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        
+        
+          <a id="nav-github-link" class="nav-icon" href="https://github.com/ppoffice/hexo-theme-alex" title="Fork me on GitHub"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <nav id="mobile-nav" class="off">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about/index.html" class="mobile-nav-link">About</a>
+  
+  <div id="search-form-wrap-mobile">
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+  </div>
+</nav>
+      <div class="outer">
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/12/29/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/28/动态REM/">动态REM</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/27/移动端响应式/">移动端响应式</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/24/HTML基础知识/">HTML基础知识</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/23/一个简易的server/">一个简易的server</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://hexo.io">Hexo</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+        <section id="main"><article id="post-动态REM" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/28/动态REM/" class="article-date">
+  <time datetime="2017-12-28T14:29:53.000Z" itemprop="datePublished">2017-12-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      动态REM
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="动态REM"><a href="#动态REM" class="headerlink" title="动态REM"></a>动态REM</h1><ol>
+<li><p>什么是REM：这个单位代表根元素的<code>font-size</code>(默认为16px)的大小</p>
+</li>
+<li><p>REM和EM的区别：REM指根元素的<code>font-size</code>，EM指自身元素的<code>font-size</code></p>
+</li>
+<li><p>手机端方案的特点：所有的手机显示的界面都是一样的，只是大小不同。由于REM代表html的<code>font-size</code>，我们可以间接用REM表示viewport width（设备宽度），<br>然后用JS动态调整REM</p>
+</li>
+<li><p>用JS动态调整REM：我们可以用<code>document.write()</code>写入样式，同样需要写一个meta来阻止页面的缩放：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    var pageWidth = window.innerWidth</div><div class="line">    document.write(&apos;&lt;style&gt;html&#123;font-size&apos; + pageWidth/10 + &apos;px;&#125;&lt;/style&gt;&apos;)</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>此时<code>1REM==html{font-size}==pageWidth/10</code>也就是设备宽度的十分之一</p>
+<ol>
+<li><p>REM可以和其他单位同时使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">font-size:16px;</div><div class="line">border:1px soild red;</div><div class="line">width:5rem;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在SCSS里使用PX2REM：<br>首先安装SASS</p>
+</li>
+</ol>
+<ul>
+<li>npm config set registry <a href="https://registry.npm.taobao.org/" target="_blank" rel="external">https://registry.npm.taobao.org/</a></li>
+<li>touch ~/.bashrc</li>
+<li>echo ‘export SASS_BINARY_SIZE=”<a href="https://npm.taobao.org/mirrors/node-sass&quot;&#39;&gt;&gt;~/.bashrc" target="_blank" rel="external">https://npm.taobao.org/mirrors/node-sass&quot;&#39;&gt;&gt;~/.bashrc</a></li>
+<li>source ~/.bashrc</li>
+<li><p>npm i -g node-sass</p>
+</li>
+<li><p>makdir ~/Docktop/scss-demo</p>
+</li>
+<li>cd ~/Docktop/scss-demo</li>
+<li>mkdir scss css</li>
+<li>touch scss/style.scss</li>
+<li><p>start scss/style.scss</p>
+</li>
+<li><p>node-sass -wr scss -o css</p>
+</li>
+</ul>
+<p>编辑scss文件自动得到css文件：<br>在scss文件里添加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">@function px($px)&#123;</div><div class="line">    @return $px/designWidth*10 + rem;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$designWidth: 640; //这里的640指设计稿的宽度，需要根据设计稿的宽度填写</div><div class="line"></div><div class="line">.child&#123;</div><div class="line">    width: px(320); //这里的px()指上面的function</div><div class="line">    height: px(160);</div><div class="line">    margin: px(40) px(40);</div><div class="line">    border: 1px soild red;</div><div class="line">    float: left;</div><div class="line">    font-size: 1em</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>即可实现px自动变为rem</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/28/动态REM/" data-id="cjbrks58z00034gr8vaxzz2z7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/12/29/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/27/移动端响应式/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">移动端响应式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <a href="/" class="logo">Hexo个人博客</a>
+      &copy; 2017 FuhuaChen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrollLoading.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
