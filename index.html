@@ -76,7 +76,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -86,6 +86,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/04/05/排序算法/">排序算法</a>
+          </li>
         
           <li>
             <a href="/2018/03/23/关于HTTP的请求与响应/">关于HTTP的请求与响应</a>
@@ -101,10 +105,6 @@
         
           <li>
             <a href="/2017/12/27/移动端响应式/">移动端响应式</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/24/HTML基础知识/">HTML基础知识</a>
           </li>
         
       </ul>
@@ -134,6 +134,69 @@
 </aside>
         
         <section id="main">
+  
+    <article id="post-排序算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/05/排序算法/" class="article-date">
+  <time datetime="2018-04-05T01:07:11.000Z" itemprop="datePublished">2018-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/05/排序算法/">排序算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>排序算法是基础算法，今天借助<a href="https://visualgo.net/en/sorting" target="_blank" rel="external">算法动态可视化工具</a>来理解一下算法的思想。</p>
+<h1 id="冒泡排序-bubbleSort"><a href="#冒泡排序-bubbleSort" class="headerlink" title="冒泡排序(bubbleSort)"></a>冒泡排序(bubbleSort)</h1><p>思路：</p>
+<ol>
+<li>从第一个数开始，对比相邻的两个数，如果后面的数小于前面的数调换两个数的位置，否则保持不变，对比完一轮，确定最后一个数为最大值。</li>
+<li>除了最后一个值，重复1步骤直到只剩一个数。</li>
+</ol>
+<p>JS代码实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function bubbleSort(arr)&#123;</div><div class="line">    var len = arr.length</div><div class="line">    for(var i = 0;i &lt; arr.length - 1;i++)&#123;</div><div class="line">        for(var j = 0;j &lt; arr.length - 1 - i;j++)&#123;</div><div class="line">            if(arr[j] &gt; arr[j+1])&#123; //对比相邻的两个数</div><div class="line">                var t = arr[j]     //调换位置</div><div class="line">                arr[j] = arr[j+1]</div><div class="line">                arr[j+1] = t</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return arr</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="选择排序-selectionSort"><a href="#选择排序-selectionSort" class="headerlink" title="选择排序(selectionSort)"></a>选择排序(selectionSort)</h1><p>思路：</p>
+<ol>
+<li>通过对比找出最小的数，和第一个数调换位置。</li>
+<li>除了第一个数，找出剩下的数里最小的数，和第二个数调换位置。</li>
+<li>以此类推，直到剩下最后一个数。</li>
+</ol>
+<p>JS代码实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">function selectionSort(arr)&#123;</div><div class="line">    len = arr.length</div><div class="line">    for(i = 0;i &lt; len - 1;i++)&#123;</div><div class="line">        var minIndex = i  //设置最小值</div><div class="line">        for(j = i + 1;j &lt; len;j++)&#123;  //寻找最小值</div><div class="line">            if(arr[minIndex] &gt; arr[j])&#123; </div><div class="line">                minIndex = j</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        var t = arr[i]  //调换位置</div><div class="line">        arr[i] = arr[minIndex]</div><div class="line">        arr[minIndex] = t</div><div class="line">    &#125;</div><div class="line">    return arr</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="插入排序-insertionSort"><a href="#插入排序-insertionSort" class="headerlink" title="插入排序(insertionSort)"></a>插入排序(insertionSort)</h1><p>思路：</p>
+<ol>
+<li>将元素分成已排序和未排序两部分，所有元素默认为未排序。</li>
+<li>在未排序的元素中，抽出第一个元素，和已排序的元素依次比较，插入到合适的位置。</li>
+</ol>
+<p>JS代码实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function insertionSort(arr)&#123;</div><div class="line">    len = arr.length</div><div class="line">    for(var i = 0;i &lt; len;i++)&#123;</div><div class="line">        var value = arr[i]</div><div class="line">        for(var j = i-1;j &gt;= 0 &amp;&amp; value &lt; arr[j];j--)&#123;</div><div class="line">                arr[j+1] = arr[j]</div><div class="line">        &#125;</div><div class="line">        arr[j+1] = value</div><div class="line">    &#125;</div><div class="line">    return arr</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="快速排序-quickSort"><a href="#快速排序-quickSort" class="headerlink" title="快速排序(quickSort)"></a>快速排序(quickSort)</h1><p>思路：</p>
+<ol>
+<li>以第一个数为基准，把比基准小的数放到左边，比基准大的数放到右边。这样基准就排序完成。</li>
+<li>把未排序的数按照1步骤，进行排序（递归），直到不能在细分，退出递归返回数组。</li>
+<li>合并数组。</li>
+</ol>
+<p>JS代码实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function quickSort(arr)&#123;</div><div class="line">    if(arr.length &lt;= 1)&#123;</div><div class="line">        return arr</div><div class="line">    &#125;</div><div class="line">    var pivotIndex = Math.floor(arr.length/2)</div><div class="line">    var pivot = arr.splice(pivotIndex,1)[0]</div><div class="line">    var left = []</div><div class="line">    var right = []</div><div class="line">    for(var i = 0;i &lt; arr.length;i++)&#123;</div><div class="line">        if(arr[i] &lt; pivot)&#123;</div><div class="line">            left.push(arr[i])</div><div class="line">        &#125;else&#123;</div><div class="line">            right.push(arr[i])</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return quickSort(left).concat([pivot],quickSort(right))</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/05/排序算法/" data-id="cjfmlpbg500023cr8gxkv5om8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-关于HTTP的请求与响应" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -206,7 +269,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/23/关于HTTP的请求与响应/" data-id="cjfbwqorz0008q0r8ez074l6b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/23/关于HTTP的请求与响应/" data-id="cjfmlpbhn00093cr8x0e7na5g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -249,7 +312,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/20/Git常用命令/" data-id="cjfbwqoqq0007q0r81wohp3ev" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/20/Git常用命令/" data-id="cjfmlpbgd00053cr8d99zo0yh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -323,7 +386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/28/动态REM/" data-id="cjfbwqoq10000q0r8l02trl6v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/28/动态REM/" data-id="cjfmlpbgg00063cr8ykqz4g62" class="article-share-link">Share</a>
       
       
     </footer>
@@ -380,7 +443,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/27/移动端响应式/" data-id="cjfbwqoqg0003q0r8hug34iln" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/27/移动端响应式/" data-id="cjfmlpbhl00083cr8ezluv5kj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -579,7 +642,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/24/HTML基础知识/" data-id="cjfbwqoqe0002q0r8muj3e8x3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/24/HTML基础知识/" data-id="cjfmlpbfz00013cr8qycvnrmu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -626,7 +689,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/23/一个简易的server/" data-id="cjfbwqoqa0001q0r8xgbeidsd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/23/一个简易的server/" data-id="cjfmlpbex00003cr899bq4iwy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -669,7 +732,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/18/第二篇博客/" data-id="cjfbwqoqi0004q0r8stcdypb3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/18/第二篇博客/" data-id="cjfmlpbhk00073cr8th3lxt0x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -706,7 +769,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/18/开博大吉/" data-id="cjfbwqoql0005q0r8rsn3gzxf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/18/开博大吉/" data-id="cjfmlpbgb00043cr80ws2ae9l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -751,7 +814,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/18/hello-world/" data-id="cjfbwqoqo0006q0r8fjovk6mj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/18/hello-world/" data-id="cjfmlpbg700033cr8pxkxaf0f" class="article-share-link">Share</a>
       
       
     </footer>
