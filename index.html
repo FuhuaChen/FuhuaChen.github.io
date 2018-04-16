@@ -76,7 +76,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -86,6 +86,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/04/16/初窥jQuery/">初窥jQuery</a>
+          </li>
         
           <li>
             <a href="/2018/04/05/排序算法/">排序算法</a>
@@ -101,10 +105,6 @@
         
           <li>
             <a href="/2017/12/28/动态REM/">动态REM</a>
-          </li>
-        
-          <li>
-            <a href="/2017/12/27/移动端响应式/">移动端响应式</a>
           </li>
         
       </ul>
@@ -134,6 +134,54 @@
 </aside>
         
         <section id="main">
+  
+    <article id="post-初窥jQuery" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/16/初窥jQuery/" class="article-date">
+  <time datetime="2018-04-16T05:23:13.000Z" itemprop="datePublished">2018-04-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/16/初窥jQuery/">初窥jQuery</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>jQuery作为目前最受欢迎的javascript库，想必大家都不陌生，据统计，已经超过70%的网站直接或间接的使用了jQuery，所以学习jQuery是很有必要的。<br>我们知道jQuery其实是一个函数库，既然是函数，那我们能不能自己实现一个类似jQuery的功能呢？答案自然是肯定的。所以我们今天通过自己封装一个最简单的函数来了解一下jQuery的原理与思想。</p>
+<h1 id="给元素加上一个class"><a href="#给元素加上一个class" class="headerlink" title="给元素加上一个class"></a>给元素加上一个class</h1><p>首先，在页面上有5个<code>div</code>标签，我们需要给这5个<code>div</code>都加上一个名字为<code>red</code>的class，那么我们会这样做：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var allDiv = document.querySelectorAll(&apos;div&apos;)</div><div class="line">allDiv[0].classList.add(&apos;red&apos;)</div><div class="line">allDiv[1].classList.add(&apos;red&apos;)</div><div class="line">allDiv[2].classList.add(&apos;red&apos;)</div><div class="line">allDiv[3].classList.add(&apos;red&apos;)</div><div class="line">allDiv[4].classList.add(&apos;red&apos;)</div></pre></td></tr></table></figure></p>
+<p>这样我们就实现了我们的需求，但是我们发现这个代码有很大的问题，没有效率且都是重复的代码，所以我们很容易就想到了循环：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var allDiv = document.querySelectorAll(&apos;div&apos;)</div><div class="line">for(var i=0;i&lt;allDiv.length;i++)&#123;</div><div class="line">    allDiv[i].calssList.add(&apos;red&apos;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在代码就简洁了许多，然后我们就想，既然能给<code>div</code>添加class，我们能不能给其他元素添加class呢？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function addClass(node)&#123;</div><div class="line">    var allNodes = document.querySelectorAll(node)</div><div class="line">    for(var i=0;i&lt;allNode.length;i++)&#123;</div><div class="line">        allNodes[i].calssList.add(&apos;red&apos;)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当然，我们又发现新问题了，其他的元素我们想加的是其他的class，并不是所有的都添加<code>red</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function addClass(node，classes)&#123;</div><div class="line">    var allNodes = document.querySelectorAll(node)</div><div class="line">    for(var i=0;i&lt;allNode.length;i++)&#123;</div><div class="line">        allNodes[i].calssList.add(classes)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>只要把class当做参数传进去就行啦。</p>
+<h1 id="设置元素的textContent"><a href="#设置元素的textContent" class="headerlink" title="设置元素的textContent"></a>设置元素的textContent</h1><p>还是那5个<code>div</code>现在我们希望把<code>div</code>的textContent全部变为hello：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function setText(node)&#123;</div><div class="line">    var allNodes = document.querySelectorAll(node)</div><div class="line">    for(var i=0;i&lt;allNodes;i++)&#123;</div><div class="line">        allNodes[i].textContent = &apos;hello&apos;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>还是那个问题，我们希望每次设置不同的内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function setText(node,text)&#123;</div><div class="line">    var allNodes = document.querySelectorAll(node)</div><div class="line">    for(var i=0;i&lt;allNodes;i++)&#123;</div><div class="line">        allNodes[i].textContent = text</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在我们就可以使用这两个函数批量添加class和设置textContent了,但是很显然这跟jQuery一点关系都没有，我们知道jQuery是我们给它一个元素，它会封装这个元素并返回一些私有的属性，并不是直接使用这些函数，所以我们需要进一步封装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">window.jQuery = function(node)&#123;</div><div class="line">    return&#123;</div><div class="line">        addClass:function(classes)&#123;</div><div class="line">            var allNodes = document.querySelectorAll(node)</div><div class="line">            for(var i=0;i&lt;allNodes.length;i++)&#123;</div><div class="line">                allNodes[i].classList.add(classes)</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        setText:function setText(text)&#123;</div><div class="line">            var allNodes = document.querySelectorAll(node)</div><div class="line">            for(var i=0;i&lt;allNodes.length;i++)&#123;</div><div class="line">                allNodes[i].textContent = text</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在我们把两个函数作为对象的属性返回出去，我们发现现在已经非常接近jQuery了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">window.$ = jQuery</div></pre></td></tr></table></figure></p>
+<p>现在我们就可以使用这个功能简单的jQuery了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var $div = $(&apos;div&apos;)</div><div class="line">$div.addClass(&apos;red&apos;)</div><div class="line">$div.setText(&apos;hello&apos;)</div></pre></td></tr></table></figure></p>
+<p>这样我们就实现了和原来一样的效果，当然jQuery的功能更加强大和复杂，但是都是同样通过操作DOM实现的，只不过jQuery帮我们做了这些复杂的工作，让遍历和操作、事件处理、动画和Ajax各种复杂操作变得简单高效。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/16/初窥jQuery/" data-id="cjg1wka960000ewr835oxjnh8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-排序算法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -188,7 +236,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/05/排序算法/" data-id="cjfmlpbg500023cr8gxkv5om8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/05/排序算法/" data-id="cjg1wkabl0007ewr8nuu20psx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -269,7 +317,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/23/关于HTTP的请求与响应/" data-id="cjfmlpbhn00093cr8x0e7na5g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/23/关于HTTP的请求与响应/" data-id="cjg1wkacl000aewr8bt7midh8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -312,7 +360,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/20/Git常用命令/" data-id="cjfmlpbgd00053cr8d99zo0yh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/20/Git常用命令/" data-id="cjg1wkabi0006ewr81tlydxme" class="article-share-link">Share</a>
       
       
     </footer>
@@ -386,7 +434,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/28/动态REM/" data-id="cjfmlpbgg00063cr8ykqz4g62" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/28/动态REM/" data-id="cjg1wkabg0005ewr8p90tu4ci" class="article-share-link">Share</a>
       
       
     </footer>
@@ -443,7 +491,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/27/移动端响应式/" data-id="cjfmlpbhl00083cr8ezluv5kj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/27/移动端响应式/" data-id="cjg1wkacj0009ewr8hke0xe4n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -642,7 +690,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/24/HTML基础知识/" data-id="cjfmlpbfz00013cr8qycvnrmu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/24/HTML基础知识/" data-id="cjg1wkab30002ewr8f77gfng3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -689,7 +737,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/23/一个简易的server/" data-id="cjfmlpbex00003cr899bq4iwy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/23/一个简易的server/" data-id="cjg1wkab60003ewr8zb5c9z8s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -732,7 +780,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/18/第二篇博客/" data-id="cjfmlpbhk00073cr8th3lxt0x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/18/第二篇博客/" data-id="cjg1wkabn0008ewr82z7hpt6n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -769,52 +817,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/18/开博大吉/" data-id="cjfmlpbgb00043cr80ws2ae9l" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/18/hello-world/" class="article-date">
-  <time datetime="2017-10-18T06:49:25.181Z" itemprop="datePublished">2017-10-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/18/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/18/hello-world/" data-id="cjfmlpbg700033cr8pxkxaf0f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/18/开博大吉/" data-id="cjg1wkabd0004ewr87kw1etq5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -825,6 +828,10 @@
 
   
 
+
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 </section>
       </div>
       <footer id="footer">
