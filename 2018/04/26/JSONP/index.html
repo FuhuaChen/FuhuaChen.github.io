@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>移动端响应式 | Hexo个人博客</title>
+  <title>JSONP | Hexo个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="媒体查询:当媒体满足(xxx)时就应用{}里的样式12345@media (min-width:300px) and (max-width:800px) &amp;#123;    body &amp;#123;        background:red    &amp;#125;&amp;#125;   link引入css样式时受媒体查询影响&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=">
+  <meta name="description" content="什么是JSONP由于受同源策略的限制，有时候浏览网站会带来很大的不方便，而JSONP就是服务器和客户端跨源通信的常用方法。它的基本思想是，网页通过创建并添加一个script标签，src指向服务器，同时传查询参数?callback=xxx,服务器根据查询参数，将数据放在指定的回调函数传回来(xxx.call(undefined,&amp;#39;你要的数据&amp;#39;))这样的响应，浏览器接收到响应就会执行x">
 <meta property="og:type" content="article">
-<meta property="og:title" content="移动端响应式">
-<meta property="og:url" content="http://yoursite.com/2017/12/27/移动端响应式/index.html">
+<meta property="og:title" content="JSONP">
+<meta property="og:url" content="http://yoursite.com/2018/04/26/JSONP/index.html">
 <meta property="og:site_name" content="Hexo个人博客">
-<meta property="og:description" content="媒体查询:当媒体满足(xxx)时就应用{}里的样式12345@media (min-width:300px) and (max-width:800px) &amp;#123;    body &amp;#123;        background:red    &amp;#125;&amp;#125;   link引入css样式时受媒体查询影响&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=">
+<meta property="og:description" content="什么是JSONP由于受同源策略的限制，有时候浏览网站会带来很大的不方便，而JSONP就是服务器和客户端跨源通信的常用方法。它的基本思想是，网页通过创建并添加一个script标签，src指向服务器，同时传查询参数?callback=xxx,服务器根据查询参数，将数据放在指定的回调函数传回来(xxx.call(undefined,&amp;#39;你要的数据&amp;#39;))这样的响应，浏览器接收到响应就会执行x">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2017-12-28T07:46:26.340Z">
+<meta property="og:updated_time" content="2018-04-26T06:06:39.864Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="移动端响应式">
-<meta name="twitter:description" content="媒体查询:当媒体满足(xxx)时就应用{}里的样式12345@media (min-width:300px) and (max-width:800px) &amp;#123;    body &amp;#123;        background:red    &amp;#125;&amp;#125;   link引入css样式时受媒体查询影响&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=">
+<meta name="twitter:title" content="JSONP">
+<meta name="twitter:description" content="什么是JSONP由于受同源策略的限制，有时候浏览网站会带来很大的不方便，而JSONP就是服务器和客户端跨源通信的常用方法。它的基本思想是，网页通过创建并添加一个script标签，src指向服务器，同时传查询参数?callback=xxx,服务器根据查询参数，将数据放在指定的回调函数传回来(xxx.call(undefined,&amp;#39;你要的数据&amp;#39;))这样的响应，浏览器接收到响应就会执行x">
   
   
     <link rel="icon" href="/favicon.png">
@@ -137,10 +137,10 @@
   
 </aside>
         
-        <section id="main"><article id="post-移动端响应式" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-JSONP" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/12/27/移动端响应式/" class="article-date">
-  <time datetime="2017-12-27T14:25:12.000Z" itemprop="datePublished">2017-12-27</time>
+    <a href="/2018/04/26/JSONP/" class="article-date">
+  <time datetime="2018-04-26T05:30:10.000Z" itemprop="datePublished">2018-04-26</time>
 </a>
     
   </div>
@@ -151,7 +151,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      移动端响应式
+      JSONP
     </h1>
   
 
@@ -159,32 +159,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li>媒体查询:当媒体满足(xxx)时就应用{}里的样式<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@media (min-width:300px) and (max-width:800px) &#123;</div><div class="line">    body &#123;</div><div class="line">        background:red</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>link引入css样式时受媒体查询影响<br><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; media=&quot;(max-wdith:800px)&quot;&gt;</code><br>当媒体满足<code>(max-wdith:800px)</code>时link里的css样式才会生效（这里生效不是指下载，link里的css文件不管是否满足media条件始终都会下载）</p>
-<ol>
-<li><p>根据设计图做网页</p>
-</li>
-<li><p>学会隐藏元素</p>
-</li>
-<li><p>手机端需要加一个meta来阻止页面的缩放：<br><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</code></p>
-</li>
-<li><p>手机端的交互方式不一样：</p>
-</li>
-</ol>
-<ul>
-<li>没有hover</li>
-<li>没有touch事件</li>
-<li>没有resize</li>
-<li>没有滚动条</li>
-</ul>
+        <h1 id="什么是JSONP"><a href="#什么是JSONP" class="headerlink" title="什么是JSONP"></a>什么是JSONP</h1><p>由于受同源策略的限制，有时候浏览网站会带来很大的不方便，而JSONP就是服务器和客户端跨源通信的常用方法。<br>它的基本思想是，网页通过创建并添加一个<code>script</code>标签，src指向服务器，同时传查询参数<code>?callback=xxx</code>,<br>服务器根据查询参数，将数据放在指定的回调函数传回来(<code>xxx.call(undefined,&#39;你要的数据&#39;)</code>)这样的响应，浏览器接收到响应就会执行<code>xxx.call(undefined,&#39;你要的数据&#39;)</code>，从而获得想要的数据，这就是JSONP:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">button.addEventlistener(&apos;click&apos;,(e)=&gt;&#123;</div><div class="line">    let script = document.createElement(&apos;script&apos;)</div><div class="line">    let functionName = &apos;jQuery&apos; + parseInt(Math.random()*100000,10)</div><div class="line">    window[functionName] = function()&#123;</div><div class="line">        amount.innerText = amount.innerText - 0 - 1</div><div class="line">    &#125;</div><div class="line">    script.src = &apos;/pay?callback=&apos; + functionName</div><div class="line">    document.body.appendChild(script)</div><div class="line">    script.onload = function(e)&#123;</div><div class="line">        e.currentTarget.remove()</div><div class="line">        delete window[functionName]</div><div class="line">    &#125; </div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>用jQuery实现JSONP:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">url: &quot;http://jack.com:8002/pay&quot;,</div><div class="line">dataType: &quot;jsonp&quot;,</div><div class="line">success: function( response ) &#123;</div><div class="line">    if(response === &apos;success&apos;)&#123;</div><div class="line">    amount.innerText = amount.innerText - 1</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/27/移动端响应式/" data-id="cjgg4t36z0008bsr8dl1280eg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/26/JSONP/" data-id="cjgg4t35o0000bsr89y1dsizk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -193,19 +174,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/12/28/动态REM/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          动态REM
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/10/24/HTML基础知识/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/04/16/初窥jQuery/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">HTML基础知识</div>
+      <div class="article-nav-title">初窥jQuery</div>
     </a>
   
 </nav>

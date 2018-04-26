@@ -76,7 +76,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -86,6 +86,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/04/26/JSONP/">JSONP</a>
+          </li>
         
           <li>
             <a href="/2018/04/16/初窥jQuery/">初窥jQuery</a>
@@ -101,10 +105,6 @@
         
           <li>
             <a href="/2018/03/20/Git常用命令/">Git常用命令</a>
-          </li>
-        
-          <li>
-            <a href="/2017/12/28/动态REM/">动态REM</a>
           </li>
         
       </ul>
@@ -134,6 +134,44 @@
 </aside>
         
         <section id="main">
+  
+    <article id="post-JSONP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/26/JSONP/" class="article-date">
+  <time datetime="2018-04-26T05:30:10.000Z" itemprop="datePublished">2018-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/26/JSONP/">JSONP</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="什么是JSONP"><a href="#什么是JSONP" class="headerlink" title="什么是JSONP"></a>什么是JSONP</h1><p>由于受同源策略的限制，有时候浏览网站会带来很大的不方便，而JSONP就是服务器和客户端跨源通信的常用方法。<br>它的基本思想是，网页通过创建并添加一个<code>script</code>标签，src指向服务器，同时传查询参数<code>?callback=xxx</code>,<br>服务器根据查询参数，将数据放在指定的回调函数传回来(<code>xxx.call(undefined,&#39;你要的数据&#39;)</code>)这样的响应，浏览器接收到响应就会执行<code>xxx.call(undefined,&#39;你要的数据&#39;)</code>，从而获得想要的数据，这就是JSONP:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">button.addEventlistener(&apos;click&apos;,(e)=&gt;&#123;</div><div class="line">    let script = document.createElement(&apos;script&apos;)</div><div class="line">    let functionName = &apos;jQuery&apos; + parseInt(Math.random()*100000,10)</div><div class="line">    window[functionName] = function()&#123;</div><div class="line">        amount.innerText = amount.innerText - 0 - 1</div><div class="line">    &#125;</div><div class="line">    script.src = &apos;/pay?callback=&apos; + functionName</div><div class="line">    document.body.appendChild(script)</div><div class="line">    script.onload = function(e)&#123;</div><div class="line">        e.currentTarget.remove()</div><div class="line">        delete window[functionName]</div><div class="line">    &#125; </div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>用jQuery实现JSONP:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">url: &quot;http://jack.com:8002/pay&quot;,</div><div class="line">dataType: &quot;jsonp&quot;,</div><div class="line">success: function( response ) &#123;</div><div class="line">    if(response === &apos;success&apos;)&#123;</div><div class="line">    amount.innerText = amount.innerText - 1</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/26/JSONP/" data-id="cjgg4t35o0000bsr89y1dsizk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-初窥jQuery" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -173,7 +211,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/16/初窥jQuery/" data-id="cjg1wka960000ewr835oxjnh8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/16/初窥jQuery/" data-id="cjgg4t36s0004bsr88xb4vnst" class="article-share-link">Share</a>
       
       
     </footer>
@@ -236,7 +274,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/05/排序算法/" data-id="cjg1wkabl0007ewr8nuu20psx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/05/排序算法/" data-id="cjgg4t36y0007bsr8hyyfhpnp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -317,7 +355,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/23/关于HTTP的请求与响应/" data-id="cjg1wkacl000aewr8bt7midh8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/23/关于HTTP的请求与响应/" data-id="cjgg4t36q0003bsr8z6fk3f22" class="article-share-link">Share</a>
       
       
     </footer>
@@ -360,7 +398,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/20/Git常用命令/" data-id="cjg1wkabi0006ewr81tlydxme" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/20/Git常用命令/" data-id="cjgg4t37d000bbsr8pfxqyt8k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -434,7 +472,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/28/动态REM/" data-id="cjg1wkabg0005ewr8p90tu4ci" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/28/动态REM/" data-id="cjgg4t36u0005bsr8splo6n7f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -491,7 +529,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/27/移动端响应式/" data-id="cjg1wkacj0009ewr8hke0xe4n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/27/移动端响应式/" data-id="cjgg4t36z0008bsr8dl1280eg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -690,7 +728,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/24/HTML基础知识/" data-id="cjg1wkab30002ewr8f77gfng3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/24/HTML基础知识/" data-id="cjgg4t37b000absr89dfs3l27" class="article-share-link">Share</a>
       
       
     </footer>
@@ -737,7 +775,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/23/一个简易的server/" data-id="cjg1wkab60003ewr8zb5c9z8s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/23/一个简易的server/" data-id="cjgg4t36o0002bsr81edcwooy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -780,44 +818,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/18/第二篇博客/" data-id="cjg1wkabn0008ewr82z7hpt6n" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-开博大吉" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/18/开博大吉/" class="article-date">
-  <time datetime="2017-10-18T06:52:07.000Z" itemprop="datePublished">2017-10-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/18/开博大吉/">开博大吉</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>大家好，今天我开博客啦！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/18/开博大吉/" data-id="cjg1wkabd0004ewr87kw1etq5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/18/第二篇博客/" data-id="cjgg4t3710009bsr8o9mu8ep2" class="article-share-link">Share</a>
       
       
     </footer>
