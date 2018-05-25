@@ -3,15 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2018/3 | Hexo个人博客</title>
+  <title>cookie、session、localstorage | Hexo个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo个人博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/03/index.html">
+  <meta name="description" content="cookiecookie是当客户端发起请求时，服务器通过set-cookie响应头设置cookie作为响应的一部分。客户端得到cookie之后，每次请求相同域名时都会带上服务器设置的cookie，服务器读取cookie就知道登录用户的信息。cookie大小一般在4KB左右，cookie被存在硬盘的文件里，cookie的有效期可以设置，没设置有效期一般在浏览器关闭后删除，cookie并不安全，可以被">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cookie、session、localstorage">
+<meta property="og:url" content="http://yoursite.com/2018/05/25/cookie、session、localstorage/index.html">
 <meta property="og:site_name" content="Hexo个人博客">
+<meta property="og:description" content="cookiecookie是当客户端发起请求时，服务器通过set-cookie响应头设置cookie作为响应的一部分。客户端得到cookie之后，每次请求相同域名时都会带上服务器设置的cookie，服务器读取cookie就知道登录用户的信息。cookie大小一般在4KB左右，cookie被存在硬盘的文件里，cookie的有效期可以设置，没设置有效期一般在浏览器关闭后删除，cookie并不安全，可以被">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-05-25T08:05:39.333Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo个人博客">
+<meta name="twitter:title" content="cookie、session、localstorage">
+<meta name="twitter:description" content="cookiecookie是当客户端发起请求时，服务器通过set-cookie响应头设置cookie作为响应的一部分。客户端得到cookie之后，每次请求相同域名时都会带上服务器设置的cookie，服务器读取cookie就知道登录用户的信息。cookie大小一般在4KB左右，cookie被存在硬盘的文件里，cookie的有效期可以设置，没设置有效期一般在浏览器关闭后删除，cookie并不安全，可以被">
   
   
     <link rel="icon" href="/favicon.png">
@@ -133,58 +137,56 @@
   
 </aside>
         
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/03/23/关于HTTP的请求与响应/" class="archive-article-date">
-  <time datetime="2018-03-23T10:26:02.000Z" itemprop="datePublished">3月 23</time>
+        <section id="main"><article id="post-cookie、session、localstorage" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/25/cookie、session、localstorage/" class="article-date">
+  <time datetime="2018-05-25T06:52:05.000Z" itemprop="datePublished">2018-05-25</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/23/关于HTTP的请求与响应/">关于HTTP的请求与响应</a>
+    <h1 class="article-title" itemprop="name">
+      cookie、session、localstorage
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/03/20/Git常用命令/" class="archive-article-date">
-  <time datetime="2018-03-20T02:34:56.000Z" itemprop="datePublished">3月 20</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/20/Git常用命令/">Git常用命令</a>
-    </h1>
-  
+        <h1 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h1><p>cookie是当客户端发起请求时，服务器通过set-cookie响应头设置cookie作为响应的一部分。<br>客户端得到cookie之后，每次请求相同域名时都会带上服务器设置的cookie，<br>服务器读取cookie就知道登录用户的信息。<br>cookie大小一般在4KB左右，<br>cookie被存在硬盘的文件里，<br>cookie的有效期可以设置，没设置有效期一般在浏览器关闭后删除，<br>cookie并不安全，可以被修改。</p>
+<h1 id="session"><a href="#session" class="headerlink" title="session"></a>session</h1><p>session一般来说是基于cookie实现的，将sessionID(随机数)通过cookie发给客户端，<br>客户端访问服务器时，服务器读取sessionID，<br>通过sessionID我们可以得到对应用户的隐私信息，<br>session保存在服务器上，服务器有一块内存(哈希表)保存了所有的session。</p>
+<h1 id="localstorage"><a href="#localstorage" class="headerlink" title="localstorage"></a>localstorage</h1><p>localstorage跟HTTP无关，发起请求时不会带上localstorage的值，<br>只有相同域名的页面才能互相读取localstorage，<br>每个域名localstorage最大存储量为5MB左右(每个浏览器不一样)，<br>localstorage永久有效，除非用户清理缓存，<br>一般用来记录一些没有用的信息，不能记录隐私信息，<br>常用场景：记录有没有提示过用户。</p>
+<h1 id="sessionstorage"><a href="#sessionstorage" class="headerlink" title="sessionstorage"></a>sessionstorage</h1><p>sessionstorage基本和localstorage一样，但是在用户关闭后就会失效</p>
+<h1 id="cache-control"><a href="#cache-control" class="headerlink" title="cache-control"></a>cache-control</h1><p>服务器可以设置cache-control的时间，在这段时间内如果请求的相同的url，就不发出请求，直接从缓存读取，<br>缓存一般都会缓存很久，可以通过更新版本(设置不一样的查询参数)避开缓存。<br>ETag可以通过对比md5来决定要不要读取响应体，但是还是会发起请求。</p>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/05/25/cookie、session、localstorage/" data-id="cjhlopau50000ggr8p0j6eyxz" class="article-share-link">Share</a>
+      
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/26/JSONP/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JSONP</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
       </div>
